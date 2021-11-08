@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do App</title>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body{
+      background-color:rgb(250, 248, 246);
+      min-height: 100vh;
+    }
+    .container{
+      margin: auto;
+      max-width: 650px;
+    }
+    .todohead{
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    h2{
+      margin: 1.5rem;
+      text-align: center;
+    }
+    nav {
+      display: block;
+      padding: 1rem 2rem;
+      margin-bottom: 1rem;
+      text-align: end;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 1rem;
+    }
+
+    a {
+      color: #4070f4;
+      text-decoration: none;
+      font-size: large;
+    }
+
+    .active {
+      font-weight: bold;
+    }
+    .calender-form{
+      text-align: center;
+      margin: 1rem;
+    }
+    label p{
+      display: inline;
+      margin-right: 20%;
+    }
+    #item_list{
+      max-width: 450px;
+      display: inline;
+    }
+    #item_list li{
+      text-align: center;
+      list-style: none;
+      padding: 1rem;
+      margin: 0rem 2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .span-all-three{
+      margin-left: 20%;
+    }
+    .span-all-three button{
+      padding: 5px 15px;
+      margin: 4px 2px;
+    }
+    .logout{
+      padding: .3rem .7rem;
+      margin: 1rem 1rem;
+    }
+    button{
+      border-radius: 5px;
+    }
+    .delete-me{
+      background-color: #f44040;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/register">Register</a>
+      </li>
+      <li>
+        <a href="/login">Log In</a>
+      </li>
+      <li>
+        <a class="active" href="/dashboard">Dashboard</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h2>To-Do App</h2>
+    <form class="calender-form" action="/select-date" method="post">
+      <input type="date" name="date" class="select-date">
+      <button type="submit">check</button>
+    </form>
+    <div class="todohead">
+      
+      <h2 class="date-header"></h2>
+      
+        <form id="create_form" action='/create-item' method='POST'>
+          <div>
+            <input id="create_field" name='itemName' autofocus autocomplete="off" type="text">
+            <button class="add_item">Add New Item</button>
+          </div>
+        </form>
+
+    </div>
+    <ul id="item_list">
+    </ul>
+
+  <form action='/logout' method="POST">
+    <button class="logout" type="submit">Log Out</button>
+  </form>
+
+  </div>
+  <script> 
+    let todos = <%- JSON.stringify(todos) %>
+  </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/browser.js"></script>
+</body>
+
+</html>
